@@ -1,0 +1,38 @@
+version: "3.9"
+services: 
+
+  db:
+    container_name: data_base
+    image: mariadb:10
+    environment:
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+  
+  wp:
+    container_name: word_press
+    image: wordpress:5-fpm-alpine
+    links:
+      - db
+    volumes:
+      - wp_files:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: "${WORDPRESS_DB_HOST}"
+      WORDPRESS_DB_NAME: "${WORDPRESS_DB_NAME}"
+      WORDPRESS_DB_USER: "${WORDPRESS_DB_USER}"
+      WORDPRESS_DB_PASSWORD: "${WORDPRESS_DB_PASSWORD}"
+  
+  ws:
+    container_name: web_server
+    image: nginx:alpine
+    depends_on: 
+      - wp
+    ports:
+      - 8085:80
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+      - wp_files:/var/www/html
+
+volumes: 
+  wp_files: 
