@@ -45,6 +45,15 @@ services:
     networks:
         - default
 
+  haproxy:
+    image: ubuntu
+    container_name: haproxy
+    ports:
+      - "8084:80"
+    command: /bin/bash -c "while true; do echo hello; sleep 2; done" 
+    networks:
+      - default
+
 networks:
   default:
     name: haproxy
