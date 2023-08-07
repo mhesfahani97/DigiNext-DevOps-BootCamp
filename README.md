@@ -16,9 +16,19 @@ This repo is like a treasure trove with different folders:
 
 Join me in this DevOps odyssey! This bootcamp has got it all - from coding incantations to infrastructure sorcery. Each task collection (Task 1 to Task 7) is like a new spellbook, unlocking the secrets of DevOps.
 
-## Task Details 📝
+## Task Folders Details 📝
 
-In the `part1` section of each folder (Task 1 to Task 7), I've spilled the beans on each task's secrets. I've even got some mini-projects that are like my potions - they helped me brew solutions with a sprinkle of awesomeness.
+Inside each task folder, you'll find two subfolders that pave your way to mastery:
+
+### Learning 📚
+
+The Learning subfolder serves as your training ground. Here, you'll find small and simple projects carefully crafted to sharpen your skills and prepare you for the main task. Consider it your DevOps dojo, where you'll practice your moves before the big battle!
+
+### Main Task 🎯
+
+Welcome to the main event! In the Main Task subfolder, you'll discover the challenge that awaits. Detailed task descriptions along with my solutions are here to guide you. I believe in the power of sharing knowledge, and that's why I've provided my solutions – so you can learn and conquer at your own pace.
+
+
 
 ## GitHub Wiki 📚
 
