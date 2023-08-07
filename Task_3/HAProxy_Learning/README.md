@@ -49,6 +49,9 @@ Follow these steps to set up the load balancing environment:
     curl 127.0.0.1:8084
     ```
     ![](https://raw.githubusercontent.com/mhesfahani97/DigiNext-DevOps-BootCamp/main/Task_3/HAProxy_Learning/pictures/5.png)
+   
+You can find a comprehensive explanation of the haproxy.cfg file on the wiki. However, there are no explanations available for the other files, as they are similar to the Task_2 files. In case you encounter any issues, you can refer to the previous Task wiki for assistance.
+
 Feel free to customize the configuration and explore further optimizations based on your requirements.
 
 **Note:** This is a simplified example for educational purposes. In real-world scenarios, additional configurations and security considerations are essential.
