@@ -1,4 +1,4 @@
-# Task 3: HAProxy, SQL, NoSQL Adventures 🏰
+# Task 1: VMs and Networks Adventures 🏰
 
 Welcome to Task 1's kingdom of VMs and Networks magic! In this folder, we've got 4 subfolders that will take us on an adventure through VMs and Networks.
 
