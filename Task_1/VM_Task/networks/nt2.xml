@@ -1,0 +1,22 @@
+<network>
+    <!-- Define the name of the network -->
+    <name>nt2</name>
+    
+    <!-- Specify the network forwarding mode as NAT (Network Address Translation) -->
+    <forward mode="nat"/>
+    
+    <!-- Define the bridge interface for the network -->
+    <bridge name="virbr2"/>
+    
+    <!-- Configure the IP settings for the network -->
+    <ip address="192.168.0.1" netmask="255.255.255.0">
+        
+        <!-- Configure DHCP settings for automatic IP assignment -->
+        <dhcp>
+            <!-- Define the range of IP addresses that DHCP can assign -->
+            <range start="192.168.0.2" end="192.168.0.254"/>
+        </dhcp>
+        
+    </ip>
+</network>
+

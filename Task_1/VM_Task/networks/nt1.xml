@@ -1,0 +1,14 @@
+<network>
+    <!-- Define the name of the network -->
+    <name>nt1</name>
+    
+    <!-- Define the bridge interface for the network -->
+    <bridge name="virbr1"/>
+    
+    <!-- Specify the forwarding mode as "none," indicating no network address translation -->
+    <forward mode="none"/>
+    
+    <!-- Configure the IP settings for the network -->
+    <ip address="192.168.100.1" netmask="255.255.255.0"/>
+</network>
+
