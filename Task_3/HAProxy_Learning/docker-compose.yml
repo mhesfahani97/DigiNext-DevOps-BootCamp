@@ -1,21 +1,22 @@
 version: '3.9'
 services:
 
+  # Service for web1 using NGINX image
   web1:
     image: nginx
     container_name: web1
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
-      - ./index/index1.html:/usr/share/nginx/html/index.html
+      - ./nginx.conf:/etc/nginx/conf.d/nginx.conf   # Mount custom NGINX configuration
+      - ./index/index1.html:/usr/share/nginx/html/index.html  # Mount custom index.html
     ports:
-      - "8081:80"
+      - "8081:80"   # Map port 8081 on host to port 80 in container
     environment:
-      - NGINX_PORT=80
-    command: /bin/bash -c "exec nginx -g 'daemon off;'"
+      - NGINX_PORT=80   # Set NGINX port environment variable
+    command: /bin/bash -c "exec nginx -g 'daemon off;'"  # Run NGINX in the foreground
     networks:
-      - default
-      
+      - default   # Attach to default network
 
+  # Service for web2 using NGINX image
   web2:
     image: nginx
     container_name: web2
@@ -29,8 +30,8 @@ services:
     command: /bin/bash -c "exec nginx -g 'daemon off;'"
     networks:
       - default
-      
 
+  # Service for web3 using NGINX image
   web3:
     image: nginx
     container_name: web3
@@ -43,17 +44,19 @@ services:
       - NGINX_PORT=80
     command: /bin/bash -c "exec nginx -g 'daemon off;'"
     networks:
-        - default
+      - default
 
+  # Service for HAProxy load balancer using Ubuntu image
   haproxy:
     image: ubuntu
     container_name: haproxy
     ports:
       - "8084:80"
-    command: /bin/bash -c "while true; do echo hello; sleep 2; done" 
+    command: /bin/bash -c "while true; do echo hello; sleep 2; done"  # Placeholder command for example
     networks:
       - default
 
 networks:
   default:
-    name: haproxy
+    name: haproxy  # Name of the default network
+
