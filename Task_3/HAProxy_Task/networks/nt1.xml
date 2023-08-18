@@ -1,0 +1,6 @@
+<network>
+	<name>nt1</name>
+	<bridge name="virbr1"/>
+	<forward mode="none"/>
+	<ip address="192.168.100.1" netmask="255.255.255.0"/>
+</network>
