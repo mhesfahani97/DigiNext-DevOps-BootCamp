@@ -25,4 +25,4 @@ Try to absorb as many information as possible on how these services are being se
 
 3. Don't forget to check out the [GitHub Wiki](https://github.com/mhesfahani97/DigiNext-DevOps-BootCamp/wiki) for detailed explanations, step-by-step guides.
 
-Now, grab your load balancers and let's balance our way to glory! 🌐🏹
+Now, grab your Kubernetes clusters and let's orchestrate our way to glory! 🌐🏹
