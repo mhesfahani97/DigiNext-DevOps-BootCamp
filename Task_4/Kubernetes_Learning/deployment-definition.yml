@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  replicas: 3                         # Move replicas up to spec level
+  selector:
+    matchLabels:
+      app: myapp                      # Matches the labels within the Pod template
+  template:
+    metadata:                         # Fix the typo 'metadate' to 'metadata'
+      labels:                         # Remove name from metadata. It's not needed and Kubernetes doesn't use it.
+        app: myapp
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx:latest           # It's good practice to use specific version of the image
+        resources:                     # Define the resource requests and limits
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "200m"
+            memory: "256Mi"
+        ports:
+        - containerPort: 80           # Define the port the container is listening on

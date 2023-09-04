@@ -35,5 +35,11 @@ wget https://github.com/containernetworking/plugins/releases/download/v1.3.0/cni
 tar Cxzvf /opt/cni/bin cni-plugins-linux-amd64-v1.3.0.tgz
 
 mkdir /etc/containerd
-containerd config default > /etc/containerd/config.toml
+containerd config default | sudo tee /etc/containerd/config.toml
+sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
+curl -L https://raw.githubusercontent.com/containerd/containerd/main/containerd.service -o /etc/systemd/system/containerd.service
 
+systemctl daemon-reload
+systemctl enable --now containerd
+systemctl restart containerd.service
+systemctl status containerd
