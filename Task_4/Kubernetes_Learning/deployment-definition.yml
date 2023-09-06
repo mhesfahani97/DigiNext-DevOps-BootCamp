@@ -1,29 +1,31 @@
+# Define a Kubernetes Deployment resource
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp-deployment
+  name: myapp-deployment  # Name of the deployment
   labels:
-    app: myapp
-    type: front-end
+    app: myapp           # Label for identifying the application
+    type: front-end      # Additional label for categorization
 spec:
-  replicas: 3                         # Move replicas up to spec level
+  replicas: 3            # Number of desired replica pods
   selector:
     matchLabels:
-      app: myapp                      # Matches the labels within the Pod template
+      app: myapp         # Selector to match pods with label "app: myapp"
   template:
-    metadata:                         # Fix the typo 'metadate' to 'metadata'
-      labels:                         # Remove name from metadata. It's not needed and Kubernetes doesn't use it.
-        app: myapp
+    metadata:
+      labels:
+        app: myapp       # Label for pods created by this template
     spec:
       containers:
-      - name: nginx-container
-        image: nginx:latest           # It's good practice to use specific version of the image
-        resources:                     # Define the resource requests and limits
+      - name: nginx-container   # Container name
+        image: nginx:latest    # Docker image to use
+        resources:
           requests:
-            cpu: "100m"
-            memory: "128Mi"
+            cpu: "100m"        # CPU request for the container
+            memory: "128Mi"    # Memory request for the container
           limits:
-            cpu: "200m"
-            memory: "256Mi"
+            cpu: "200m"        # CPU limit for the container
+            memory: "256Mi"    # Memory limit for the container
         ports:
-        - containerPort: 80           # Define the port the container is listening on
+        - containerPort: 80     # Port the container will listen on (HTTP)
+
