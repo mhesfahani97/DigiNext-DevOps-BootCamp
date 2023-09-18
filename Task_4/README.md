@@ -1,17 +1,17 @@
-# Task 4: Kubernetes Adventures 🏰
+# Task 4: Kubernetes_1 Adventures 🏰
 
-Welcome to Task 4's kingdom of Kubernetes magic! In this folder, we've got two subfolders that will take us on an adventure through Kubernetes.
+Welcome to Task 4's kingdom of kubernetes_1 magic! In this folder, we've got two subfolders that will take us on an adventure through kubernetes_1.
 
 ## Subfolders Overview 📂
 
-### Kubernetes_Learning 📚
+### kubernetes_1_Learning 📚
 
 create a cluster by Kubeadm and Calico network, and deploy an image for hobby!
 
-### Kubernetes_Task 🎯
+### kubernetes_1_Task 🎯
 
 This week our task is extremely simple: use the below repository and provided guidelines to set up a K8S cluster:
-[repository](https://github.com/kelseyhightower/kubernetes-the-hard-way).  
+[repository](https://github.com/kelseyhightower/kubernetes_1-the-hard-way).  
 The task itself is simple, yes but doing it is hard; hence “the hard way” in the repository name :)  
 Try to absorb as much information as possible on how these services are being set up.  
 **Hint 1:** This guideline is based on GCP; you have to change any related part to adapt it accordingly. Search a little bit and use the “bare-metal” keyword; use this result just as a guideline and refer to our own link to do the task.  
@@ -25,4 +25,4 @@ Try to absorb as much information as possible on how these services are being se
 
 3. Don't forget to check out the [GitHub Wiki](https://github.com/mhesfahani97/DigiNext-DevOps-BootCamp/wiki) for detailed explanations, step-by-step guides.
 
-Now, grab your Kubernetes clusters and let's orchestrate our way to glory! 🌐🏹
+Now, grab your kubernetes_1 clusters and let's orchestrate our way to glory! 🌐🏹

@@ -5,7 +5,7 @@ This guide outlines the steps to create a Kubernetes cluster on three Virtual Ma
 ## Prerequisites
 
 1. **VM Creation**:
-   - Set up three VMs based on your preferred method.
+   - Set up three VMs based on your preferred method.(I'll use digitaloceans VPC and VPS) 
    - If using DigitalOcean, refer to this [initial server setup guide](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04).
 
 2. **Master Node Setup**:
