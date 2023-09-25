@@ -85,3 +85,9 @@ Now, grab your kubernetes-2 clusters and let's orchestrate our way to glory! ðŸŒ
      ``` 
 ## Create wordpress namespace
    - run `kubectl create -f ./my-namespace.yaml
+
+## Add resource configs for MySQL
+   - if you need help see [kube-wordpress](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/)
+   - run 
+
+## Add resource configs for wordpress

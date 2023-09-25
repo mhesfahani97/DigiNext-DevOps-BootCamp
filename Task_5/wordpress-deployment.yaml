@@ -7,11 +7,34 @@ metadata:
 spec:
   ports:
     - port: 80
+      targetPort: 80
   selector:
     app: wordpress
     tier: frontend
-  type: LoadBalancer
+  type: NodePort
 ---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: wordpress-storage-class
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: wordpress-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: wordpress-storage-class
+  hostPath:
+    path: /var/data/mysql
+---
+
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -23,7 +46,8 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 20Gi
+      storage: 10Gi
+  storageClassName: wordpress-storage-class 
 ---
 apiVersion: apps/v1
 kind: Deployment

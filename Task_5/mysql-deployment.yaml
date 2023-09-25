@@ -12,6 +12,27 @@ spec:
     tier: mysql
   clusterIP: None
 ---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: mysql-storage-class
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: mysql-storage-class
+  hostPath:
+    path: /var/data/mysql
+---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -23,7 +44,8 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 20Gi
+      storage: 10Gi
+  storageClassName: mysql-storage-class
 ---
 apiVersion: apps/v1
 kind: Deployment
