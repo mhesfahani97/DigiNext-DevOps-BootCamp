@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  namespace: wordpress
+  name: wordpress-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: wordpress-storage-class
+  hostPath:
+    path: /var/data/mysql
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  namespace: wordpress
+  name: mysql-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: mysql-storage-class
+  hostPath:
+    path: /var/data/mysql

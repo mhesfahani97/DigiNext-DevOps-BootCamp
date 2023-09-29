@@ -1,57 +1,7 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: wordpress
-  labels:
-    app: wordpress
-spec:
-  ports:
-    - port: 80
-      targetPort: 80
-  selector:
-    app: wordpress
-    tier: frontend
-  type: NodePort
----
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-  name: wordpress-storage-class
-provisioner: kubernetes.io/no-provisioner
-volumeBindingMode: WaitForFirstConsumer
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: wordpress-pv
-spec:
-  capacity:
-    storage: 10Gi
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: wordpress-storage-class
-  hostPath:
-    path: /var/data/mysql
----
-
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: wp-pv-claim
-  labels:
-    app: wordpress
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
-  storageClassName: wordpress-storage-class 
----
 apiVersion: apps/v1
 kind: Deployment
-metadata:
+metadata: 
+  namespace: wordpress
   name: wordpress
   labels:
     app: wordpress
@@ -69,25 +19,24 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: wordpress:6.2.1-apache
-        name: wordpress
-        env:
-        - name: WORDPRESS_DB_HOST
-          value: wordpress-mysql
-        - name: WORDPRESS_DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mysql-pass
-              key: password
-        - name: WORDPRESS_DB_USER
-          value: wordpress
-        ports:
-        - containerPort: 80
+        - image: wordpress:6.2.1-apache
           name: wordpress
-        volumeMounts:
-        - name: wordpress-persistent-storage
-          mountPath: /var/www/html
+          env:
+          - name: WORDPRESS_DB_HOST
+            value: wordpress-mysql
+          - name: WORDPRESS_DB_PASSWORD
+            value: win
+          - name: WORDPRESS_DB_USER
+            value: wordpress
+          - name: WORDPRESS_DB_NAME
+            value: wordpress
+          ports:
+          - containerPort: 80
+            name: wordpress
+          volumeMounts:
+          - name: wordpress-persistent-storage
+            mountPath: /var/www/html 
       volumes:
       - name: wordpress-persistent-storage
         persistentVolumeClaim:
-          claimName: wp-pv-claim
+          claimName: wp-pv-claim 
