@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: wordpress-mysql-secret
+  namespace: wordpress
+type: Opaque
+data:
+  MYSQL_ROOT_PASSWORD: d2lu
+  MYSQL_PASSWORD: d2lu
+  WORDPRESS_DB_PASSWORD: d2lu

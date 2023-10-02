@@ -25,7 +25,10 @@ spec:
           - name: WORDPRESS_DB_HOST
             value: wordpress-mysql
           - name: WORDPRESS_DB_PASSWORD
-            value: win
+            valueFrom:
+              secretKeyRef:
+                name: wordpress-mysql-secret
+                key: WORDPRESS_DB_PASSWORD
           - name: WORDPRESS_DB_USER
             value: wordpress
           - name: WORDPRESS_DB_NAME
