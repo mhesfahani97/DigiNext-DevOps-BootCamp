@@ -11,7 +11,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: wordpress-storage-class
   hostPath:
-    path: /var/data/mysql
+    path: /var/data/wordpress
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -27,3 +27,19 @@ spec:
   storageClassName: mysql-storage-class
   hostPath:
     path: /var/data/mysql
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  namespace: wordpress
+  name: dregistry-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: dregistry-storage-class
+  hostPath:
+    path: /var/data/dregistry
+

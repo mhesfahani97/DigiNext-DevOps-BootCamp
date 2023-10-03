@@ -27,3 +27,19 @@ spec:
     requests:
       storage: 10Gi
   storageClassName: mysql-storage-class
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: wordpress
+  name: dregistry-pv-claim
+  labels:
+    app: wordpress
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: dregistry-storage-class
+
