@@ -20,7 +20,7 @@ spec:
         tier: docker-registry
     spec:
       containers:
-      - name: dregistry-wordpress
+      - name: wordpress-dregistry
         image: registry
         ports:
         - containerPort: 5000

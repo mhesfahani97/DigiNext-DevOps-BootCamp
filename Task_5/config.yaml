@@ -1,0 +1,20 @@
+version: 0.1
+
+log:
+  accesslog:
+    disabled: true
+  level: debug
+  formatter: text
+  fields:
+    service: registry
+    environment: staging
+
+auth:
+  token:
+    autoredirect: true
+    realm: http://159.223.215.188/auth
+    service: wordpress-dregistry
+    issuer: registry-token-issuer
+    rootcertbundle: /root/certs/bundle
+
+
