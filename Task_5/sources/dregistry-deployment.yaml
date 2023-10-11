@@ -20,15 +20,15 @@ spec:
         tier: docker-registry
     spec:
       containers:
-      - name: wordpress-dregistry
-        image: registry
-        ports:
-        - containerPort: 5000
-        volumeMounts:
-        - name: wordpress-registry
-          mountPath: /var/lib/registry
+        - name: wordpress-dregistry
+          image: registry
+          ports:
+            - containerPort: 5000
+          volumeMounts:
+            - name: wordpress-registry
+              mountPath: /var/lib/registry
       volumes:
-      - name: wordpress-registry
-        persistentVolumeClaim:
-          claimName: dregistry-pv-claim
+        - name: wordpress-registry
+          persistentVolumeClaim:
+            claimName: dregistry-pv-claim
 

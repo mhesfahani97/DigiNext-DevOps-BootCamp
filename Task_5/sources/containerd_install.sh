@@ -27,8 +27,8 @@ lsmod | grep overlay
 sysctl net.bridge.bridge-nf-call-iptables net.bridge.bridge-nf-call-ip6tables net.ipv4.ip_forward
 
 # Download and install containerd
-wget https://github.com/containerd/containerd/releases/download/v1.6.24/containerd-1.6.24-linux-amd64.tar.gz
-tar Cxzvf /usr/local containerd-1.6.24-linux-amd64.tar.gz
+wget https://github.com/containerd/containerd/releases/download/v1.7.7/containerd-1.7.7-linux-amd64.tar.gz
+tar Cxzvf /usr/local containerd-1.7.7-linux-amd64.tar.gz
 
 # Configure containerd systemd service
 mkdir -p /usr/local/lib/systemd/system/
