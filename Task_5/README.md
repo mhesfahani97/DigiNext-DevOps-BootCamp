@@ -68,6 +68,8 @@ Before you begin, make sure you have the following components and configurations
  - On `droplet-3`, config the HAProxy.
    ```
    cp ./haproxy.cfg /etc/haproxy
+   sudo systemctl restart haproxy.service
+   sudo systemctl enable haproxy.service
    ```
 
 ## Creating the Kubernetes Cluster
