@@ -136,7 +136,11 @@ Before you begin, make sure you have the following components and configurations
 
 ## Creating Deployments
 - Deploy WordPress, MySQL, and the Docker registry with the provided commands.
-
+  ```
+  kubectl apply -f ./dregistry-deployment.yaml
+  kubectl apply -f ./mysql-deployment.yaml
+  kubectl apply -f ./wordpress-deployment.yaml
+  ```
 Your WordPress deployment on Kubernetes is now complete! Enjoy your journey through the magical kingdom of Kubernetes-2.
 
 Feel free to customize this README further or add any additional details to suit your specific deployment requirements. Good luck! 🚀
