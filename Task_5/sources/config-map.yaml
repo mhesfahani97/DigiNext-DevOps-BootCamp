@@ -1,22 +1,23 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: dregistry-config
-  namespace: wordpress
+  name: dregistry-config   # Name of the ConfigMap
+  namespace: wordpress    # The namespace in which this ConfigMap resides
 data:
-  config.yml: |
-    version: 0.1
+  config.yml: |           # Data key and value for config.yml
+    version: 0.1          # Version of the configuration
     log:
       accesslog:
-        disabled: true
-      level: debug
-      formatter: text
+        disabled: true     # Disable access log
+      level: debug         # Log level set to debug
+      formatter: text      # Log formatter format
       fields:
-        service: registry
-        environment: staging
+        service: registry  # Log field: service (registry)
+        environment: staging  # Log field: environment (staging)
     auth:
       token:
-        autoredirect: true
-        realm: http://10.110.0.2/auth
-        service: wordpress-dregistry
-        issuer: wordpress-dregistry
+        autoredirect: true  # Auto-redirect for token authentication
+        realm: http://10.110.0.2/auth  # Authentication realm URL
+        service: wordpress-dregistry  # Service for authentication
+        issuer: wordpress-dregistry   # Issuer for authentication
+

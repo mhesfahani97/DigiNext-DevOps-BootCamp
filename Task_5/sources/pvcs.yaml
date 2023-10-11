@@ -1,45 +1,48 @@
+# Persistent Volume Claim for WordPress
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   namespace: wordpress
-  name: wp-pv-claim
+  name: wp-pv-claim            # Name of the PVC
   labels:
-    app: wordpress
+    app: wordpress             # Labels to identify the application
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteOnce            # Access mode for the volume
   resources:
     requests:
-      storage: 10Gi
-  storageClassName: wordpress-storage-class
----
+      storage: 10Gi            # Requested storage size
+  storageClassName: wordpress-storage-class   # Storage class name
+
+# Persistent Volume Claim for MySQL
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   namespace: wordpress
-  name: mysql-pv-claim
+  name: mysql-pv-claim         # Name of the PVC
   labels:
-    app: wordpress
+    app: wordpress             # Labels to identify the application
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteOnce            # Access mode for the volume
   resources:
     requests:
-      storage: 10Gi
-  storageClassName: mysql-storage-class
----
+      storage: 10Gi            # Requested storage size
+  storageClassName: mysql-storage-class   # Storage class name
+
+# Persistent Volume Claim for Docker Registry
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   namespace: wordpress
-  name: dregistry-pv-claim
+  name: dregistry-pv-claim     # Name of the PVC
   labels:
-    app: wordpress
+    app: wordpress             # Labels to identify the application
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteOnce            # Access mode for the volume
   resources:
     requests:
-      storage: 10Gi
-  storageClassName: dregistry-storage-class
+      storage: 10Gi            # Requested storage size
+  storageClassName: dregistry-storage-class  # Storage class name
 

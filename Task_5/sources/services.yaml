@@ -1,30 +1,32 @@
+# Service for WordPress
 apiVersion: v1
 kind: Service
 metadata:
   namespace: wordpress
-  name: wordpress
+  name: wordpress               # Name of the Service
   labels:
-    app: wordpress
+    app: wordpress             # Labels to identify the application
 spec:
   ports:
-    - port: 80
-      targetPort: 80
+    - port: 80                 # Port to expose
+      targetPort: 80           # Target port where the service forwards traffic
   selector:
-    app: wordpress
-    tier: frontend
-  type: NodePort
----
+    app: wordpress             # Selector for pods
+    tier: frontend             # Selector for pods with the frontend tier
+  type: NodePort               # Service type
+
+# Service for MySQL
 apiVersion: v1
 kind: Service
 metadata:
-  name: wordpress-mysql
+  name: wordpress-mysql        # Name of the Service
   namespace: wordpress
   labels:
-    app: wordpress
+    app: wordpress             # Labels to identify the application
 spec:
   ports:
-    - port: 3306
+    - port: 3306                # Port to expose
   selector:
-    app: wordpress
-    tier: mysql
-  clusterIP: None
+    app: wordpress             # Selector for pods
+    tier: mysql                # Selector for pods with the mysql tier
+  clusterIP: None              # No cluster IP for this service

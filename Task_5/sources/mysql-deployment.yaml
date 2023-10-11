@@ -2,47 +2,48 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: wordpress
-  name: wordpress-mysql
+  name: wordpress-mysql     # Name of the Deployment
   labels:
-    app: wordpress
+    app: wordpress          # Labels to identify the application
 spec:
-  replicas: 1
+  replicas: 1              # Number of desired replicas
   selector:
     matchLabels:
-      app: wordpress
+      app: wordpress        # Select pods with these labels
       tier: mysql
   strategy:
-    type: Recreate
+    type: Recreate         # The update strategy for pods
   template:
     metadata:
       labels:
-        app: wordpress
+        app: wordpress      # Labels for the pod template
         tier: mysql
     spec:
       containers:
-        - image: mysql
+        - image: mysql       # Docker image to use for the container
           name: mysql
           env:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: wordpress-mysql-secret
+                  name: wordpress-mysql-secret   # Reference to the secret for MySQL root password
                   key: MYSQL_ROOT_PASSWORD
             - name: MYSQL_DATABASE
-              value: wordpress
+              value: wordpress                 # Name of the MySQL database
             - name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: wordpress-mysql-secret
+                  name: wordpress-mysql-secret   # Reference to the secret for MySQL password
                   key: MYSQL_PASSWORD
             - name: MYSQL_USER
-              value: wordpress
+              value: wordpress                 # MySQL username
           ports:
-            - containerPort: 3306
+            - containerPort: 3306             # Port to expose for MySQL
           volumeMounts:
             - name: mysql-persistent-storage
-              mountPath: /var/lib/mysql
+              mountPath: /var/lib/mysql        # Mount path for MySQL data storage
       volumes: 
         - name: mysql-persistent-storage
           persistentVolumeClaim:
-            claimName: mysql-pv-claim
+            claimName: mysql-pv-claim          # Claim the persistent volume for MySQL
+

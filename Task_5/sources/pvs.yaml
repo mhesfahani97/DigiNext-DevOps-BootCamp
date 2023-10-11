@@ -1,45 +1,48 @@
+# Persistent Volume for WordPress
 apiVersion: v1
 kind: PersistentVolume
 metadata:
   namespace: wordpress
-  name: wordpress-pv
+  name: wordpress-pv            # Name of the PV
 spec:
   capacity:
-    storage: 10Gi
+    storage: 10Gi               # Capacity of the volume
   accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: wordpress-storage-class
+    - ReadWriteOnce             # Access mode for the volume
+  persistentVolumeReclaimPolicy: Retain  # Reclaim policy for the volume
+  storageClassName: wordpress-storage-class  # Storage class name
   hostPath:
-    path: /var/data/wordpress
----
+    path: /var/data/wordpress    # Host path where the volume is located
+
+# Persistent Volume for MySQL
 apiVersion: v1
 kind: PersistentVolume
 metadata:
   namespace: wordpress
-  name: mysql-pv
+  name: mysql-pv                # Name of the PV
 spec:
   capacity:
-    storage: 10Gi
+    storage: 10Gi               # Capacity of the volume
   accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: mysql-storage-class
+    - ReadWriteOnce             # Access mode for the volume
+  persistentVolumeReclaimPolicy: Retain  # Reclaim policy for the volume
+  storageClassName: mysql-storage-class  # Storage class name
   hostPath:
-    path: /var/data/mysql
----
+    path: /var/data/mysql        # Host path where the volume is located
+
+# Persistent Volume for Docker Registry
 apiVersion: v1
 kind: PersistentVolume
 metadata:
   namespace: wordpress
-  name: dregistry-pv
+  name: dregistry-pv            # Name of the PV
 spec:
   capacity:
-    storage: 10Gi
+    storage: 10Gi               # Capacity of the volume
   accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: dregistry-storage-class
+    - ReadWriteOnce             # Access mode for the volume
+  persistentVolumeReclaimPolicy: Retain  # Reclaim policy for the volume
+  storageClassName: dregistry-storage-class  # Storage class name
   hostPath:
-    path: /var/data/dregistry
+    path: /var/data/dregistry    # Host path where the volume is located
 
