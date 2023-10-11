@@ -64,6 +64,12 @@ Before you begin, make sure you have the following components and configurations
      haproxy -v
      ```
 
+## Config the HAProxy
+ - On `droplet-3`, config the HAProxy.
+   ```
+   cp ./haproxy.cfg /etc/haproxy
+   ```
+
 ## Creating the Kubernetes Cluster
 - For information on creating a Kubernetes cluster, refer to the [kubeadm documentation](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/).
 - On the master node, initialize the cluster using the following commands:
@@ -124,7 +130,7 @@ Before you begin, make sure you have the following components and configurations
 - Create secret files for WordPress and MySQL password environment variables as instructed.
 - Apply these secrets with the following command:
   ```shell
-  kubectl apply -f ./kustomization.yaml1
+  kubectl apply -f ./kustomization.yaml
   ```
 
 ## Creating a Config Map
