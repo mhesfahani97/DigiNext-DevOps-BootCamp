@@ -1,3 +1,18 @@
+# VMs and Networks 🏰
+
+Welcome to Task 1's VMs and Networks! 
+
+## Task Objective 🎯
+
+1. Use any kind of virtualization that you desire.
+Create a “host-only” network.  
+2. Create any kind of network which has Internet access through an interface of your host.  
+3. To test the access to another network:  
+ - Create a VM with 2 interfaces; one to access internet and another as host-only = Machine A.
+ - Create another VM with host-only network = Machine B.
+ - Grant internet access from A to B.
+4. Create a VPN server or Proxy server:
+This VPN or proxy server MUST be usable through cli for package managers like apt or yum. 
 # Setup Guide
 
 ## Introduction

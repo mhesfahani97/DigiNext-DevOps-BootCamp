@@ -2,7 +2,7 @@ version: "3.9"
 services: 
 
   db:
-    container_name: data_base
+    container_name: data-base
     image: mariadb:10
     environment:
       MYSQL_DATABASE: "${MYSQL_DATABASE}"
@@ -11,7 +11,7 @@ services:
       MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
   
   wp:
-    container_name: word_press
+    container_name: wordpress
     image: wordpress:5-fpm-alpine
     links:
       - db
@@ -24,7 +24,7 @@ services:
       WORDPRESS_DB_PASSWORD: "${WORDPRESS_DB_PASSWORD}"
   
   ws:
-    container_name: web_server
+    container_name: web-server
     image: nginx:alpine
     depends_on: 
       - wp
