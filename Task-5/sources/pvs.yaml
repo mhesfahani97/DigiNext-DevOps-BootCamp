@@ -1,48 +1,31 @@
-# Persistent Volume for WordPress
+---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
   namespace: wordpress
-  name: wordpress-pv            # Name of the PV
+  name: wp-pv            
 spec:
   capacity:
-    storage: 10Gi               # Capacity of the volume
+    storage: 10Gi        
   accessModes:
-    - ReadWriteOnce             # Access mode for the volume
-  persistentVolumeReclaimPolicy: Retain  # Reclaim policy for the volume
-  storageClassName: wordpress-storage-class  # Storage class name
+    - ReadWriteMany      
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: wp-sc
   hostPath:
-    path: /var/data/wordpress    # Host path where the volume is located
+    path: /var/data/wordpress
 
-# Persistent Volume for MySQL
+---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
   namespace: wordpress
-  name: mysql-pv                # Name of the PV
+  name: mysql-pv               
 spec:
   capacity:
-    storage: 10Gi               # Capacity of the volume
+    storage: 10Gi              
   accessModes:
-    - ReadWriteOnce             # Access mode for the volume
-  persistentVolumeReclaimPolicy: Retain  # Reclaim policy for the volume
-  storageClassName: mysql-storage-class  # Storage class name
+    - ReadWriteMany            
+  persistentVolumeReclaimPolicy: Retain 
+  storageClassName: mysql-sc
   hostPath:
-    path: /var/data/mysql        # Host path where the volume is located
-
-# Persistent Volume for Docker Registry
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  namespace: wordpress
-  name: dregistry-pv            # Name of the PV
-spec:
-  capacity:
-    storage: 10Gi               # Capacity of the volume
-  accessModes:
-    - ReadWriteOnce             # Access mode for the volume
-  persistentVolumeReclaimPolicy: Retain  # Reclaim policy for the volume
-  storageClassName: dregistry-storage-class  # Storage class name
-  hostPath:
-    path: /var/data/dregistry    # Host path where the volume is located
-
+    path: /var/data/mysql

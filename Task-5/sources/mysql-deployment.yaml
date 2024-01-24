@@ -2,48 +2,47 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: wordpress
-  name: wordpress-mysql     # Name of the Deployment
+  name: wp-mysql    
   labels:
-    app: wordpress          # Labels to identify the application
+    app: wordpress         
 spec:
-  replicas: 1              # Number of desired replicas
+  replicas: 1              
   selector:
     matchLabels:
-      app: wordpress        # Select pods with these labels
+      app: wordpress       
       tier: mysql
   strategy:
-    type: Recreate         # The update strategy for pods
+    type: Recreate         
   template:
     metadata:
       labels:
-        app: wordpress      # Labels for the pod template
+        app: wordpress     
         tier: mysql
     spec:
       containers:
-        - image: mysql       # Docker image to use for the container
+        - image: mysql     
           name: mysql
           env:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: wordpress-mysql-secret   # Reference to the secret for MySQL root password
+                  name: wp-mysql-secret
                   key: MYSQL_ROOT_PASSWORD
             - name: MYSQL_DATABASE
-              value: wordpress                 # Name of the MySQL database
+              value: wordpress                
             - name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: wordpress-mysql-secret   # Reference to the secret for MySQL password
+                  name: wp-mysql-secret
                   key: MYSQL_PASSWORD
             - name: MYSQL_USER
-              value: wordpress                 # MySQL username
+              value: wordpress                
           ports:
-            - containerPort: 3306             # Port to expose for MySQL
+            - containerPort: 3306             
           volumeMounts:
             - name: mysql-persistent-storage
-              mountPath: /var/lib/mysql        # Mount path for MySQL data storage
+              mountPath: /var/lib/mysql       
       volumes: 
         - name: mysql-persistent-storage
           persistentVolumeClaim:
-            claimName: mysql-pv-claim          # Claim the persistent volume for MySQL
-
+            claimName: mysql-pvc

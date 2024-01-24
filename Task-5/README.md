@@ -78,48 +78,37 @@
       kubectl apply -f ./services.yaml
       ```
 
-## Creating Storage Classes
-- Create storage classes for WordPress, MySQL, and the Docker registry using the provided commands.
-- Apply these storage classes with the following command:
-  ```shell
-  kubectl apply -f ./storage-classes.yaml
-  ```
+3. **Creating Storage Classes**
+    - Create storage classes for WordPress, and MySQL
+    - Apply these storage classes with the following command:
+      ```shell
+      kubectl apply -f ./storage-classes.yaml
+      ```
 
-## Creating Persistent Volumes
-- Create persistent volumes for WordPress, MySQL, and the Docker registry as specified.
-- Apply these persistent volumes with the following command:
-  ```shell
-  kubectl apply -f ./pvs.yaml
-  ```
+4. **Creating Persistent Volumes**
+    - Create persistent volumes for WordPress, MySQL, and the Docker registry as specified.
+    - Apply these persistent volumes with the following command:
+      ```shell
+      kubectl apply -f ./pvs.yaml
+      ```
 
-## Creating Persistent Volume Claims
-- Create persistent volume claims for WordPress, MySQL, and the Docker registry using the provided commands.
-- Apply these persistent volume claims with the following command:
-  ```shell
-  kubectl apply -f ./pvcs.yaml
-  ```
+5. **Creating Persistent Volume Claims**
+    - Create persistent volume claims for WordPress, MySQL, and the Docker registry using the provided commands.
+    - Apply these persistent volume claims with the following command:
+      ```shell
+      kubectl apply -f ./pvcs.yaml
+      ```
 
-## Creating Secret Files
-- Create secret files for WordPress and MySQL password environment variables as instructed.
-- Apply these secrets with the following command:
-  ```shell
-  kubectl apply -f ./kustomization.yaml
-  ```
+6. **Creating Secret Files**
+    - Create secret files for WordPress and MySQL password environment variables as instructed.
+    - Apply these secrets with the following command:
+      ```shell
+      kubectl apply -f ./kustomization.yaml
+      ```
 
-## Creating a Config Map
-- Create a config map for the Docker registry using the provided command.
-- Apply this config map with the following command:
-  ```shell
-  kubectl apply -f ./config-map.yaml
+7. Creating Deployments
+- Deploy WordPress, and MySQL.
   ```
-
-## Creating Deployments
-- Deploy WordPress, MySQL, and the Docker registry with the provided commands.
-  ```
-  kubectl apply -f ./dregistry-deployment.yaml
   kubectl apply -f ./mysql-deployment.yaml
   kubectl apply -f ./wordpress-deployment.yaml
   ```
-**WordPress deployment on Kubernetes is not complete! it needs docker registry.**
-
-Feel free to customize this README further or add any additional details to suit your specific deployment requirements. Good luck! 🚀

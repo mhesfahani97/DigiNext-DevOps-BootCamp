@@ -1,48 +1,48 @@
-# Deployment for WordPress
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: wordpress
-  name: wordpress               # Name of the Deployment
+  name: wp     
   labels:
-    app: wordpress             # Labels to identify the application
+    app: wordpress    
 spec:
-  replicas: 1                  # Number of desired replicas
+  replicas: 1         
   selector:
     matchLabels:
-      app: wordpress            # Select pods with these labels
+      app: wordpress  
       tier: frontend
   strategy:
-    type: Recreate             # The update strategy for pods
+    type: Recreate    
   template:
     metadata:
       labels:
-        app: wordpress          # Labels for the pod template
+        app: wordpress
         tier: frontend
     spec:
       containers:
-        - image: wordpress       # Docker image to use for the container
-          name: wordpress
+        - image: wordpress
+          name: wp
           env:
             - name: WORDPRESS_DB_HOST
-              value: wordpress-mysql  # Database host for WordPress
+              value: wordpress-mysql
             - name: WORDPRESS_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: wordpress-mysql-secret  # Reference to the secret for DB password
+                  name: wp-mysql-secret
                   key: WORDPRESS_DB_PASSWORD
             - name: WORDPRESS_DB_USER
-              value: wordpress         # WordPress DB user
+              value: wordpress        
             - name: WORDPRESS_DB_NAME
-              value: wordpress         # WordPress DB name
+              value: wordpress        
           ports:
-            - containerPort: 80        # Port to expose for WordPress
+            - containerPort: 80       
               name: wordpress
           volumeMounts:
             - name: wordpress-persistent-storage
-              mountPath: /var/www/html    # Mount path for WordPress data
+              mountPath: /var/www/html
       volumes:
         - name: wordpress-persistent-storage
           persistentVolumeClaim:
-            claimName: wp-pv-claim        # Claim the persistent volume for WordPress
+            claimName: wp-pvc
 
