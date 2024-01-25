@@ -3,33 +3,33 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: wordpress
-  name: wp     
+  name: wordpress              
   labels:
-    app: wordpress    
+    app: wordpress             
 spec:
-  replicas: 1         
+  replicas: 1                  
   selector:
     matchLabels:
-      app: wordpress  
+      app: wordpress           
       tier: frontend
   strategy:
-    type: Recreate    
+    type: Recreate             
   template:
     metadata:
       labels:
-        app: wordpress
+        app: wordpress         
         tier: frontend
     spec:
       containers:
-        - image: wordpress
-          name: wp
+        - image: wordpress     
+          name: wordpress
           env:
             - name: WORDPRESS_DB_HOST
-              value: wordpress-mysql
+              value: wordpress-mysql 
             - name: WORDPRESS_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: wp-mysql-secret
+                  name: wordpress-mysql-secret 
                   key: WORDPRESS_DB_PASSWORD
             - name: WORDPRESS_DB_USER
               value: wordpress        
@@ -40,9 +40,9 @@ spec:
               name: wordpress
           volumeMounts:
             - name: wordpress-persistent-storage
-              mountPath: /var/www/html
+              mountPath: /var/www/html  
       volumes:
         - name: wordpress-persistent-storage
           persistentVolumeClaim:
-            claimName: wp-pvc
+            claimName: wp-pv-claim     
 

@@ -3,7 +3,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   namespace: wordpress
-  name: wp-sc
+  name: wordpress-storage-class    
 provisioner: kubernetes.io/no-provisioner
 volumeBindingMode: WaitForFirstConsumer  
 
@@ -12,6 +12,15 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   namespace: wordpress
-  name: mysql-sc
+  name: mysql-storage-class         
 provisioner: kubernetes.io/no-provisioner
 volumeBindingMode: WaitForFirstConsumer  
+
+  #apiVersion: storage.k8s.io/v1
+  #kind: StorageClass
+  #metadata:
+  #  namespace: wordpress
+  #  name: dregistry-storage-class      # Name of the StorageClass
+  #provisioner: kubernetes.io/no-provisioner   # The provisioner for the StorageClass
+  #volumeBindingMode: WaitForFirstConsumer    # Volume binding mode
+  #

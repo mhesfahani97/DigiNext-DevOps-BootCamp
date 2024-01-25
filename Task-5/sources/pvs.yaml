@@ -3,16 +3,16 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   namespace: wordpress
-  name: wp-pv            
+  name: wordpress-pv           
 spec:
   capacity:
-    storage: 10Gi        
+    storage: 10Gi              
   accessModes:
-    - ReadWriteMany      
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: wp-sc
+    - ReadWriteOnce            
+  persistentVolumeReclaimPolicy: Retain 
+  storageClassName: wordpress-storage-class 
   hostPath:
-    path: /var/data/wordpress
+    path: /var/data/wordpress  
 
 ---
 apiVersion: v1
@@ -24,8 +24,24 @@ spec:
   capacity:
     storage: 10Gi              
   accessModes:
-    - ReadWriteMany            
+    - ReadWriteOnce            
   persistentVolumeReclaimPolicy: Retain 
-  storageClassName: mysql-sc
+  storageClassName: mysql-storage-class 
   hostPath:
-    path: /var/data/mysql
+    path: /var/data/mysql    
+
+      #apiVersion: v1
+      #kind: PersistentVolume
+      #metadata:
+      #  namespace: wordpress
+      #  name: dregistry-pv            # Name of the PV
+      #spec:
+      #  capacity:
+      #    storage: 10Gi               # Capacity of the volume
+      #  accessModes:
+      #    - ReadWriteOnce             # Access mode for the volume
+      #  persistentVolumeReclaimPolicy: Retain  # Reclaim policy for the volume
+      #  storageClassName: dregistry-storage-class  # Storage class name
+      #  hostPath:
+      #    path: /var/data/dregistry    # Host path where the volume is located
+      #

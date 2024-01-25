@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: wp-mysql-secret
+  name: wordpress-mysql-secret
   namespace: wordpress        
 type: Opaque                  
 data:

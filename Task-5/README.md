@@ -73,7 +73,7 @@
       ```
 
 2. **Creating Services**
-    - Create the necessary services, including a NodePort service for exposing WordPress to HAProxy and the outside world, and a ClusterIP service for connecting WordPress to MySQL:
+    - Create the necessary services, including a NodePort service for exposing WordPress, and a ClusterIP service for connecting WordPress to MySQL:
       ```shell
       kubectl apply -f ./services.yaml
       ```
@@ -106,9 +106,9 @@
       kubectl apply -f ./kustomization.yaml
       ```
 
-7. Creating Deployments
-- Deploy WordPress, and MySQL.
-  ```
-  kubectl apply -f ./mysql-deployment.yaml
-  kubectl apply -f ./wordpress-deployment.yaml
-  ```
+7. **Creating Deployments**
+    - Deploy WordPress, and MySQL.
+      ```
+      kubectl apply -f ./mysql-deployment.yaml
+      kubectl apply -f ./wordpress-deployment.yaml
+      ```

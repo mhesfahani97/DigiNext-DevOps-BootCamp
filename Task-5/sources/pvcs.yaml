@@ -3,29 +3,45 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   namespace: wordpress
-  name: wp-pvc
+  name: wp-pv-claim            
   labels:
-    app: wordpress
+    app: wordpress             
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce            
   resources:
     requests:
-      storage: 10Gi
-  storageClassName: wp-sc
+      storage: 10Gi            
+  storageClassName: wordpress-storage-class
 
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   namespace: wordpress
-  name: mysql-pvc
+  name: mysql-pv-claim         
   labels:
-    app: wordpress
+    app: wordpress             
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce            
   resources:
     requests:
-      storage: 10Gi
-  storageClassName: mysql-sc
+      storage: 10Gi            
+  storageClassName: mysql-storage-class
+
+    #apiVersion: v1
+    #kind: PersistentVolumeClaim
+    #metadata:
+    #  namespace: wordpress
+    #  name: dregistry-pv-claim     # Name of the PVC
+    #  labels:
+    #    app: wordpress             # Labels to identify the application
+    #spec:
+    #  accessModes:
+    #    - ReadWriteOnce            # Access mode for the volume
+    #  resources:
+    #    requests:
+    #      storage: 10Gi            # Requested storage size
+    #  storageClassName: dregistry-storage-class  # Storage class name
+    #
