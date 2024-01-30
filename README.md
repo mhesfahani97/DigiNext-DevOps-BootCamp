@@ -10,7 +10,18 @@
 ## Task-4:
 
 ## Task-5: Deploy WordPress on Kubernetes
-
+Optional but highly recommended:  
+It’s a good idea to setup a K8S cluster in a production manner.  
+To do so, I recommend using kubeadm but you can do however you like according to K8S documentation:  
+https://kubernetes.io/docs/setup/production-environment/
+https://kubernetes.io/docs/setup/production-environment/tools/  
+Optional:  
+Setup a reverse proxy and host everything that we will create from this point forward, behind it.  
+Main:  
+Setup a private registry with authentication for docker.  
+Create a namespace called “wordpress”.  
+Setup our own wordpress site on your K8S cluster and expose it to outside.  
+Restart & update wordpress to see what will happen.
 ### Helpful Resources
 - [Kubernetescreate-cluster-with-kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
 - [disable-swap](https://tecadmin.net/disable-swapfile-on-ubuntu/)
@@ -39,3 +50,4 @@ We didn't cover reverse proxy yet, which you may need for this to have a clean s
 - [Add swap](https://www.digitalocean.com/community/tutorial-collections/how-to-add-swap-space)
 
 ## Task-7:
+
