@@ -1,28 +1,9 @@
-# VMs and Networks 🏰
-
-Welcome to Task 1's VMs and Networks! 
-
-## Task Objective 🎯
-
-1. Use any kind of virtualization that you desire.
-Create a “host-only” network.  
-2. Create any kind of network which has Internet access through an interface of your host.  
-3. To test the access to another network:  
- - Create a VM with 2 interfaces; one to access internet and another as host-only = Machine A.
- - Create another VM with host-only network = Machine B.
- - Grant internet access from A to B.
-4. Create a VPN server or Proxy server:
-This VPN or proxy server MUST be usable through cli for package managers like apt or yum. 
-# Setup Guide
-
-## Introduction
-
-This guide will walk you through the process of setting up a virtual network of two VMs, where VM2 acts as a gateway to provide internet connectivity to VM1. This setup involves using the provided `install_vm.sh` script along with configuration changes on both VMs.
-
-### Prerequisites
+# Prerequisites
 
 - You should have both VMs (`vm1` and `vm2`) already installed using the provided `install_vm.sh` script.
 - Network configuration files `nt1.xml` and `nt2.xml` are located in the `networks` folder.
+
+# Task-1.1
 
 ## VM2 Configuration
 
@@ -105,10 +86,52 @@ This guide will walk you through the process of setting up a virtual network of 
     sudo apt-get update
     sudo apt-get upgrade
     ```
+# Task1.2
 
-## Conclusion
+1. **Create VPSs**
+    - VPS1 in netherlands(167.172.35.173)
+    - VPS2 in iran(185.129.118.0)
 
-By following these steps, you have successfully set up a virtual network where `vm2` acts as a gateway, providing internet connectivity to `vm1`. You can now enjoy internet access on `vm1`.
+2. **Create Proxy Server**
+    - install squid 
+        ```bash
+        sudo apt-get update
+        sudo apt-get install squid
+        ```
+    - configure squid 
+        ```bash
+        cp /etc/squid/squid.conf /etc/squid/squid.conf.org
+        vim /etc/squid/squid.conf
+        ```
+        add `http_port 3128` after `TAG: http_port`
+        add `acl gitlab src 185.129.118.0/25` after `TAG: acl`
+        add `http_access allow gitlab` after` after `TAG: http_access`
+        add `access_log /var/log/squid/access.log squid` after `TAG: access_log`
+    - start squid by `sudo systemctl start squid`
+    - check squid status is running by `sudo systemctl status squid`
 
-For any further assistance or troubleshooting, feel free to reach out!
-
+3. **Proxy the VPS2**
+    - set proxy just for a user:
+        `vim ~/.bashrc`
+        add these:
+        ```
+        export HTTP_PROXY="167.172.35.173:3128/"
+        export HTTPS_PROXY="167.172.35.173:3128/"
+        export NO_PROXY="localhost,127.0.0.1,::1"
+        ```
+    - set proxy for all users:
+        `vim /etc/environment`
+        add these:
+        ```bash
+        export HTTP_PROXY="167.172.35.173:3128/"
+        export HTTPS_PROXY="167.172.35.173:3128/"
+        export NO_PROXY="localhost,127.0.0.1,::1"
+        ```
+    - set proxy for package manager
+        `vim /etc/apt/apt.conf`
+        add these:
+        ```bash
+        Acquire::http::Proxy "http://167.172.35.173:3128";
+        Acquire::https::Proxy "http://167.172.35.173:3128";
+        ```
+    - reboot the system
