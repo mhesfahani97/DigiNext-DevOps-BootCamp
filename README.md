@@ -14,6 +14,7 @@
 ### Helpful Resources
 - [how-create-proxy-server](https://www.linuxandubuntu.com/home/create-proxy-server#step-4-test-the-proxy-server)  
 - [setup-proxy-on-ubuntu](https://operavps.com/docs/setup-proxy-on-ubuntu/)  
+- [linux-learning](https://www.youtube.com/playlist?list=PLRMCwJJwWR1A3_ECuOqdIaR-XLnr6bDj_)  
 
 ## Task-2: Lunch a Blog Via Wordpress Using docker-compose
 1. Lunch a blog via wordpress using docker-compose.  
@@ -43,7 +44,7 @@
 - [containers-from-the-coach](https://www.youtube.com/watch?v=iC-WxZGhFqs)
 
 ## Task-6: Build an Image and Push It to Container Registry
-1. We need to have 2 new tools to go further with our laboratory puzzle (The 1st piece was a healthy K8S cluster):
+We need to have 2 new tools to go further with our laboratory puzzle (The 1st piece was a healthy K8S cluster):
   - a private git service
   - a private docker registry service
   - Both of the above services can be deployed with GitLab.  

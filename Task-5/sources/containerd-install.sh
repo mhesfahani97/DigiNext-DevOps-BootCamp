@@ -27,8 +27,8 @@ lsmod | grep overlay
 sysctl net.bridge.bridge-nf-call-iptables net.bridge.bridge-nf-call-ip6tables net.ipv4.ip_forward
 
 # Download and install containerd
-wget https://github.com/containerd/containerd/releases/download/v1.7.12/containerd-1.7.12-linux-amd64.tar.gz
-tar Cxzvf /usr/local containerd-1.7.12-linux-amd64.tar.gz
+wget https://github.com/containerd/containerd/releases/download/v1.7.13/containerd-1.7.13-linux-amd64.tar.gz
+tar Cxzvf /usr/local containerd-1.7.13-linux-amd64.tar.gz
 
 # Configure containerd systemd service
 mkdir -p /usr/local/lib/systemd/system/
@@ -37,7 +37,7 @@ systemctl daemon-reload
 systemctl enable --now containerd
 
 # Download and install runc
-wget https://github.com/opencontainers/runc/releases/download/v1.1.11/runc.amd64
+wget https://github.com/opencontainers/runc/releases/download/v1.1.12/runc.amd64
 install -m 755 runc.amd64 /usr/local/sbin/runc
 
 # Download and install CNI plugins

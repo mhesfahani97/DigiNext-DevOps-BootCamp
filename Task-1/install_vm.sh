@@ -1,16 +1,13 @@
 #!/bin/bash
 
-# Define an array of virtual machine names (vms) and network names (nts)
+# virtual machine names (vms) and network names (nts)
 vms=("vm1" "vm2")
 nts=("nt1" "nt2")
 
 # Loop through network names and perform network setup
 for nt_name in "${nts[@]}"; do
-    # Define network from XML file
     virsh net-define ./networks/"$nt_name".xml
-    # Start the defined network
     virsh net-start "$nt_name"
-    # Enable auto-start for the network
     virsh net-autostart "$nt_name"
 done
 
@@ -19,7 +16,7 @@ virsh net-list --all
 
 # Create virtual machine disks
 for vm_name in "${vms[@]}"; do
-    # Create a qcow2 disk image for the virtual machine
+    # Create disk image for the virtual machine
     qemu-img create -f qcow2 ./vm_disks/"$vm_name".qcow2 10G
 done
 
