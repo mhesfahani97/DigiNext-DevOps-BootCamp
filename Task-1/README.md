@@ -103,10 +103,10 @@
         cp /etc/squid/squid.conf /etc/squid/squid.conf.org
         vim /etc/squid/squid.conf
         ```
-        add `http_port 3128` after `TAG: http_port`
-        add `acl gitlab src 185.129.118.0/25` after `TAG: acl`
-        add `http_access allow gitlab` after` after `TAG: http_access`
-        add `access_log /var/log/squid/access.log squid` after `TAG: access_log`
+        add `http_port 3128` after `TAG: http_port`  
+        add `acl gitlab src 185.129.118.0/25` after `TAG: acl`  
+        add `http_access allow gitlab` after `TAG: http_access`  
+        add `access_log /var/log/squid/access.log squid` after `TAG: access_log`  
     - start squid by `sudo systemctl start squid`
     - check squid status is running by `sudo systemctl status squid`
 
