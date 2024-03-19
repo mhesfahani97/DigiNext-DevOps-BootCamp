@@ -19,6 +19,8 @@
 ## Task-2: Lunch a Blog Via Wordpress Using docker-compose
 1. Lunch a blog via wordpress using docker-compose.  
 2. Persist your data, so you don't lose them in case of container restart.
+### Helpful Resources
+- [docker-learning](https://dockerme.ir/)  
 
 ## Task-3:
 
