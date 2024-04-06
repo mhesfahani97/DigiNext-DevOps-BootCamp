@@ -1,0 +1,22 @@
+---
+version: "3.8"
+
+services:
+  sql:
+    container_name: mar-mar
+    image: mariadb:10.5
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      MARIADB_DATABASE: "${MARIADB_DATABASE}"
+      MARIADB_ROOT_PASSWORD: "${MARIADB_ROOT_PASSWORD}"
+    ports:
+      - "3306:3306"
+    volumes:
+      - persist-data:/var/lib/mysql
+      - ./queries:/root/
+    cap_add:
+      - all
+
+volumes:
+  persist-data:

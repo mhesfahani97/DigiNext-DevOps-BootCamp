@@ -46,6 +46,7 @@
 
 ### Helpful Resources
 - [morteza-bashsiz](https://www.youtube.com/playlist?list=PLRMCwJJwWR1A3_ECuOqdIaR-XLnr6bDj_)
+- [mariadbtutorial](https://www.mariadbtutorial.com/)
 
 ## Task-4:
 
