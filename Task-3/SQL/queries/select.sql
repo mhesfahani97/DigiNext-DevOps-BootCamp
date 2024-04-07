@@ -65,3 +65,26 @@ from guests g
 cross join vips v
     on v.name=g.name;
 -----------------------------------------------
+select
+    c.name country,
+    r.name region,
+    t.name continent
+from
+    countries c
+inner join regions r using (region_id)
+inner join continents t using (continent_id)
+order by
+    c.name;
+-----------------------------------------------
+select
+    name,
+    year,
+    gdp
+from
+    countries
+left join country_stats using (country_id)
+where
+    gdp is null
+order by
+    name;
+

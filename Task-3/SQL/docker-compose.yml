@@ -1,6 +1,4 @@
 ---
-version: "3.8"
-
 services:
   sql:
     container_name: mar-mar
@@ -20,3 +18,19 @@ services:
 
 volumes:
   persist-data:
+---
+services:
+  nosql:
+    container_name: mon-mon
+    image: mongo
+    restart: always
+    env_file: .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "${MONGO_INITDB_ROOT_USERNAME}"
+      MONGO_INITDB_ROOT_PASSWORD: "${MONGO_INITDB_ROOT_PASSWORD}"
+    ports:
+      - "27017:27017"
+    volumes:
+      - persist-mongo:/data/db
+volumes:
+  persist-mongo:

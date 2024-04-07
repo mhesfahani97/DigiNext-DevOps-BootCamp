@@ -89,4 +89,22 @@ We need to have 2 new tools to go further with our laboratory puzzle (The 1st pi
 - [Add swap](https://www.digitalocean.com/community/tutorial-collections/how-to-add-swap-space)
 
 ## Task-7:
+1. main task
+  - Setup a CI/CD platform like Jenkins or Gitlab-CI + ArgoCD (this one is recommended).
+  - Configure it in a way that uses your K8S cluster as slave/worker/executor
+  - Create a simple build pipeline
+    - Clone a git repo which has a Dockerfile
+    - Build it
+    - Push the image to your registry
+  - Create a simple deploy pipeline on K8S
+  - Anyhow you see fit, update an existing service on your K8S to the new version
+
+2. optional task
+  - Setup a prometheus stack (Prometheus + AlertManager + Grafana)
+  - Install “Prometheus node exporter” on your VMs
+  - Configure Prometheus to pull them with specific period
+  - Configure your Grafana to use your Prometheus as datasource
+  - Search for a good Grafana dashboard and import it to visualize your metrics
+### Helpful Resources
+- [Install Grafana, Prometheus & Node Exporter with Docker!](https://www.youtube.com/watch?v=yrscZ-kGc_Y)
 
