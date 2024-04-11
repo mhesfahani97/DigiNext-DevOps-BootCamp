@@ -1,0 +1,16 @@
+---
+services:
+  nosql:
+    container_name: mon-mon
+    image: mongo:6-jammy
+    restart: always
+    env_file: .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - "27017:27017"
+    volumes:
+      - persist-mongo:/data/db
+volumes:
+  persist-mongo:

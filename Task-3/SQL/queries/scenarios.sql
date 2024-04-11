@@ -87,4 +87,33 @@ where
     gdp is null
 order by
     name;
+-----------------------------------------------
+select
+    regions.name region,
+    avg(area) avg_area
+from
+    countries
+inner join regions
+    using(region_id)
+group by
+    regions.name
+order by
+    avg_area desc;
+-----------------------------------------------
+select 
+    regions.name region,
+    count(country_id) country_count,
+    sum(area) area
+from 
+    countries
+inner join regions 
+    using (region_id)
+group by 
+    (regions.name)
+having 
+    count(region_id) > 10 and 
+    area > 1000000
+order by 
+    area desc,
+    country_count desc;
 
