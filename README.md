@@ -88,7 +88,7 @@ We need to have 2 new tools to go further with our laboratory puzzle (The 1st pi
 - [Clone to GitLab](https://docs.gitlab.com/ee/administration/settings/import_and_export_settings.html#configure-allowed-import-sources)
 - [Add swap](https://www.digitalocean.com/community/tutorial-collections/how-to-add-swap-space)
 
-## Task-7:
+## Task-7: Monitoring + CI/CD
 1. main task
   - Setup a CI/CD platform like Jenkins or Gitlab-CI + ArgoCD (this one is recommended).
   - Configure it in a way that uses your K8S cluster as slave/worker/executor
