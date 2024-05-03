@@ -49,7 +49,7 @@
 - [mariadbtutorial](https://www.mariadbtutorial.com/)
 
 ## Task-4:
-
+do [kubernetes-hardway](https://github.com/kelseyhightower/kubernetes-the-hard-way).
 ## Task-5: Deploy WordPress on Kubernetes
 1. Optional but highly recommended:  
   - It’s a good idea to setup a K8S cluster in a production manner.  
